@@ -478,7 +478,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             // Save the arc-distance to a value to reduce computation in the for-loop, since it's the same between every OrientedPoint
             arcIncrementDistance = (pointsOnArc[1].position - pointsOnArc[0].position).magnitude;
 
-            // Raycast from first point in pointsOnArc, stepwise to last point. If any collisions are hit, immediately return 
+            // Raycast from first point in pointsOnArc, stepwise to last point. If any collisions are hit, immediately return
             for (int i = 0; i < pointsOnArc.Length - 1; i++) {
                 RaycastHit hit;
                 // do boxcasts from the first point, sequentially, to the last
@@ -1603,7 +1603,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         ////////////// TELEPORT FULL //////////////
         ///////////////////////////////////////////
 
-        // [ObsoleteAttribute(message: "This action is deprecated. Call TeleportFull(position, ...) instead.", error: false)] 
+        // [ObsoleteAttribute(message: "This action is deprecated. Call TeleportFull(position, ...) instead.", error: false)]
         // public void TeleportFull(
         //     float x, float y, float z,
         //     float rotation,
@@ -1727,7 +1727,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         //////////////// TELEPORT /////////////////
         ///////////////////////////////////////////
 
-        // [ObsoleteAttribute(message: "This action is deprecated. Call Teleport(position, ...) instead.", error: false)] 
+        // [ObsoleteAttribute(message: "This action is deprecated. Call Teleport(position, ...) instead.", error: false)]
         // public void Teleport(
         //     float x, float y, float z,
         //     float? rotation = null,
@@ -2332,7 +2332,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                     print("armslength: " + feedback.armsLength);
 #endif
 
-                    // force objec to stop moving 
+                    // force objec to stop moving
                     rb.velocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;
                     rb.Sleep();
@@ -2743,7 +2743,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             }
 
             // Note: Viewport normalizes to (0,0) bottom left, (1, 0) top right of screen
-            // now make sure the targetPosition is actually within the Camera Bounds 
+            // now make sure the targetPosition is actually within the Camera Bounds
 
             Vector3 lastPosition = AgentHand.transform.position;
             AgentHand.transform.position = targetPosition;
@@ -2932,7 +2932,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         public void MoveHandMagnitude(float moveMagnitude, float x = 0.0f, float y = 0.0f, float z = 0.0f) {
             Vector3 newPos = AgentHand.transform.position;
 
-            // get new direction relative to Agent's (camera's) forward facing 
+            // get new direction relative to Agent's (camera's) forward facing
             if (x > 0) {
                 newPos = newPos + (m_Camera.transform.right * moveMagnitude);
             }
@@ -3283,7 +3283,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
             Vector3 finalPos = GetSurfacePointBelowPosition(position) + new Vector3(0, offset, 0);
 
-            // Check spawn area here            
+            // Check spawn area here
             target.transform.position = finalPos;
 
             if (!Physics.autoSyncTransforms) {
@@ -3310,7 +3310,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                     rb.useGravity = true;
 
                     // change collision detection mode while falling so that obejcts don't phase through colliders.
-                    // this is reset to discrete on SimObjPhysics.cs's update 
+                    // this is reset to discrete on SimObjPhysics.cs's update
                     rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
 
                     GameObject topObject = GameObject.Find("Objects");
@@ -3542,7 +3542,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
             // spawn target circle in any valid "outside" receptacle in the scene even if not in veiw
             else {
-                // targetReceptacles.AddRange(physicsSceneManager.ReceptaclesInScene); 
+                // targetReceptacles.AddRange(physicsSceneManager.ReceptaclesInScene);
                 foreach (SimObjPhysics sop in physicsSceneManager.GatherAllReceptaclesInScene()) {
                     if (ReceptacleRestrictions.SpawnOnlyOutsideReceptacles.Contains(sop.ObjType)) {
                         targetReceptacles.Add(sop);
@@ -3721,7 +3721,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
         // SetObjectPoses is performed in a coroutine otherwise if
         // a frame does not pass prior to this AND the imageSynthesis
-        // is enabled for say depth or normals, Unity will crash on 
+        // is enabled for say depth or normals, Unity will crash on
         // a subsequent scene reset()
         protected IEnumerator setObjectPoses(ObjectPose[] objectPoses, bool placeStationary) {
             yield return new WaitForEndOfFrame();
@@ -3800,7 +3800,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
                 // for every sim obj in scene, find objects of type specified first
                 foreach (SimObjPhysics sop in VisibleSimObjs(true)) {
-                    // ok we found an object with type specified, now toggle it 
+                    // ok we found an object with type specified, now toggle it
                     if (sop.ObjType == sot) {
                         if (SetObjectStates.stateChange == "toggleable") {
                             if (sop.DoesThisObjectHaveThisSecondaryProperty(SimObjSecondaryProperty.CanToggleOnOff) && sop.GetComponent<CanToggleOnOff>()) {
@@ -4073,9 +4073,9 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                 maxDistance: maxVisibleDistance);
         }
 
-        // if you are holding an object, place it on a valid Receptacle 
+        // if you are holding an object, place it on a valid Receptacle
         // used for placing objects on receptacles without enclosed restrictions (drawers, cabinets, etc)
-        // only checks if the object can be placed on top of the target receptacle via the receptacle trigger box 
+        // only checks if the object can be placed on top of the target receptacle via the receptacle trigger box
         public void PlaceHeldObject(float x, float y, float maxDistance, bool forceAction = false, bool placeStationary = true, int randomSeed = 0, bool putNearXY = false) {
             SimObjPhysics targetReceptacle = null;
 
@@ -4477,7 +4477,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             return;
         }
 
-        // private IEnumerator checkDropHeldObjectAction(SimObjPhysics currentHandSimObj) 
+        // private IEnumerator checkDropHeldObjectAction(SimObjPhysics currentHandSimObj)
         // {
         //     yield return null; // wait for two frames to pass
         //     yield return null;
@@ -4487,18 +4487,18 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         //     if (currentHandSimObj != null)
         //     {
         //         Rigidbody rb = currentHandSimObj.GetComponentInChildren<Rigidbody>();
-        //         while (Time.time - startTime < 2) 
+        //         while (Time.time - startTime < 2)
         //         {
         //             if(currentHandSimObj == null)
         //             break;
 
-        //             if (Math.Abs(rb.angularVelocity.sqrMagnitude + rb.velocity.sqrMagnitude) < 0.00001) 
+        //             if (Math.Abs(rb.angularVelocity.sqrMagnitude + rb.velocity.sqrMagnitude) < 0.00001)
         //             {
         //                 // Debug.Log ("object is now at rest");
         //                 break;
-        //             } 
+        //             }
 
-        //             else 
+        //             else
         //             {
         //                 // Debug.Log ("object is still moving");
         //                 yield return null;
@@ -4553,7 +4553,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             rb.useGravity = true;
 
             // change collision detection mode while falling so that obejcts don't phase through colliders.
-            // this is reset to discrete on SimObjPhysics.cs's update 
+            // this is reset to discrete on SimObjPhysics.cs's update
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
 
             GameObject topObject = GameObject.Find("Objects");
@@ -4579,6 +4579,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                     StartCoroutine(checkDropHeldObjectActionFast(ItemInHand.GetComponent<SimObjPhysics>()));
                 }
             } else {
+                DefaultAgentHand();                
                 actionFinished(true);
             }
             ItemInHand.GetComponent<SimObjPhysics>().isInAgentHand = false;
@@ -5341,7 +5342,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         }
 
         // override for SimpleSimObj?
-        // public override SimpleSimObj[] VisibleSimObjs() 
+        // public override SimpleSimObj[] VisibleSimObjs()
         // {
         //     return GetAllVisibleSimObjPhysics(m_Camera, maxVisibleDistance);
         // }
@@ -8030,7 +8031,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                         hit.point + new Vector3(0f, ob.extents.y + 0.05f, 0f) - objsCenterRelPos[objectInd],
                         randRotation,
                         // UnityEngine.Random.rotationUniform.ToEulerAngles(),
-                        // transform.eulerAngles, 
+                        // transform.eulerAngles,
                         false,
                         false
                     );
@@ -8042,7 +8043,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
                             hit.point + new Vector3(0f, Math.Max(ob.extents.z, Math.Max(ob.extents.x, ob.extents.y)) + 0.05f, 0f) - objsCenterRelPos[objectInd],
                             randRotation,
                             // UnityEngine.Random.rotationUniform.ToEulerAngles(),
-                            // transform.eulerAngles, 
+                            // transform.eulerAngles,
                             false,
                             false
                         );
